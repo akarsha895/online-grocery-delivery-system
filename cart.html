@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="navbar">
+<h2>FreshMart</h2>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html" class="active">Cart</a>
+<a href="login.html">Login</a>
+<a href="sign-up.html">Sign Up</a>
+</div>
+</div>
+
+<div class="container">
+
+<h1 class="page-title">Your Shopping Cart</h1>
+
+<div class="cart-layout">
+
+
+<!-- CART ITEMS -->
+
+<div class="cart-items">
+
+<div class="cart-item">
+
+<img src="images/apple.jpg" class="cart-img">
+
+<div class="cart-details">
+<h3>Apple (1kg)</h3>
+<p>Fresh farm apples</p>
+</div>
+
+<div class="cart-quantity">
+<input type="number" value="2" min="1">
+</div>
+
+<div class="cart-price">
+₹300
+</div>
+
+<button class="remove-btn">Remove</button>
+
+</div>
+
+
+<div class="cart-item">
+
+<img src="images/milk.jpg" class="cart-img">
+
+<div class="cart-details">
+<h3>Milk (1L)</h3>
+<p>Fresh dairy milk</p>
+</div>
+
+<div class="cart-quantity">
+<input type="number" value="1" min="1">
+</div>
+
+<div class="cart-price">
+₹55
+</div>
+
+<button class="remove-btn">Remove</button>
+
+</div>
+
+</div>
+
+
+<!-- CART SUMMARY -->
+
+<div class="cart-summary">
+
+<h2>Order Summary</h2>
+
+<div class="summary-row">
+<span>Items</span>
+<span>2</span>
+</div>
+
+<div class="summary-row">
+<span>Total Price</span>
+<span class="total-price">₹355</span>
+</div>
+
+<a href="checkout.html">
+<button class="btn checkout-btn">Proceed to Checkout</button>
+</a>
+
+<a href="products.html">
+<button class="continue-btn">Continue Shopping</button>
+</a>
+
+</div>
+
+
+</div>
+</div>
+
+
+<footer>
+<p>© 2026 FreshMart Grocery Delivery</p>
+</footer>
+
+</body>
+</html>

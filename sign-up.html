@@ -1,68 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Sign Up - FreshMart</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - FreshMart</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
 
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/signup.css">
-</head>
+  <body class="signup-page">
+    <div class="navbar">
+      <div class="nav-logo">
+        <a href="index.html">FreshMart</a>
+      </div>
 
-<body class="signup-page">
+      <div class="search-bar">
+        <input type="text" placeholder="Search for groceries..." />
+        <button class="btn">Search</button>
+      </div>
 
-<div class="navbar">
-<h2>FreshMart</h2>
+      <div class="nav-links" id="nav-links"></div>
 
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="cart.html">Cart</a>
-<a href="login.html">Login</a>
-<a href="sign-up.html" class="active">Sign Up</a>
-</div>
-</div>
+      <div class="nav-user" id="nav-user"></div>
+    </div>
 
+    <div class="signup-wrapper">
+      <div class="signup-card">
+        <h1 class="signup-title">Create Account</h1>
+        <form class="signup-form" method="get">
+          <label class="signup-label">Full Name</label>
+          <input
+            class="signup-input"
+            type="text"
+            placeholder="Enter your full name"
+            required
+          />
 
-<div class="signup-wrapper">
+          <label class="signup-label">Email</label>
+          <input
+            class="signup-input"
+            type="email"
+            placeholder="Enter your email"
+            required
+          />
 
-<div class="signup-card">
+          <label class="signup-label">Phone</label>
+          <input
+            class="signup-input"
+            type="text"
+            placeholder="Enter phone number"
+            required
+          />
 
-<h1 class="signup-title">Create Account</h1>
+          <label class="signup-label">Address</label>
+          <textarea
+            class="signup-textarea"
+            placeholder="Enter your delivery address"
+            required
+          ></textarea>
 
-<form class="signup-form">
+          <label class="signup-label">Password</label>
+          <input
+            class="signup-input"
+            type="password"
+            placeholder="Create password"
+            required
+          />
 
-<label class="signup-label">Full Name</label>
-<input class="signup-input" type="text" placeholder="Enter your full name">
+          <button type="submit" class="btn signup-btn">Sign Up</button>
+        </form>
 
-<label class="signup-label">Email</label>
-<input class="signup-input" type="email" placeholder="Enter your email">
+        <p class="signup-login-text">
+          Already have an account?
+          <a href="login.html">Login</a>
+        </p>
+      </div>
+    </div>
 
-<label class="signup-label">Phone</label>
-<input class="signup-input" type="text" placeholder="Enter phone number">
-
-<label class="signup-label">Address</label>
-<textarea class="signup-textarea" placeholder="Enter your delivery address"></textarea>
-
-<label class="signup-label">Password</label>
-<input class="signup-input" type="password" placeholder="Create password">
-
-<button class="btn signup-btn">Sign Up</button>
-
-</form>
-
-<p class="signup-login-text">
-Already have an account?
-<a href="login.html">Login</a>
-</p>
-
-</div>
-
-</div>
-
-
-<footer>
-<p>© 2026 FreshMart Grocery Delivery</p>
-</footer>
-
-</body>
+    <footer>
+      <p>© 2026 FreshMart Grocery Delivery</p>
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

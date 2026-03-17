@@ -1,47 +1,47 @@
-.page-title{
-margin-bottom:20px;
-color:#005F02;
+.page-title {
+  margin-bottom: 20px;
+  color: #005f02;
 }
 
-.category-section{
-margin-top:50px;
-padding:20px;
-background:#F2E3BB;
-border-radius:10px;
+.category-section {
+  margin-top: 50px;
+  padding: 20px;
+  background: #f2e3bb;
+  border-radius: 10px;
 }
 
-.category-section h2{
-color:#005F02;
-margin-bottom:5px;
+.category-section h2 {
+  color: #005f02;
+  margin-bottom: 5px;
 }
 
-.category-desc{
-margin-bottom:20px;
-color:#333;
-font-size:14px;
+.category-desc {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 14px;
 }
 
-.price{
-font-weight:600;
-color:#427A43;
+.price {
+  font-weight: 600;
+  color: #427a43;
 }
 
-.category-filter{
-margin-bottom:30px;
-display:flex;
-flex-wrap:wrap;
-gap:10px;
+.category-filter {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.filter-btn{
-background:#427A43;
-color:white;
-border:none;
-padding:8px 15px;
-border-radius:5px;
-cursor:pointer;
+.filter-btn {
+  background: #427a43;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.filter-btn:hover{
-background:#005F02;
+.filter-btn:hover {
+  background: #005f02;
 }

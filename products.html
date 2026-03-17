@@ -1,222 +1,84 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Products</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/products.css" />
+  </head>
 
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/products.css">
-</head>
+  <body>
+    <div class="navbar">
+      <div class="nav-logo">
+        <a href="index.html">FreshMart</a>
+      </div>
 
-<body>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search for groceries..."
+        />
+        <button class="btn">Search</button>
+      </div>
 
-<div class="navbar">
-<h2>FreshMart</h2>
+      <div class="nav-links" id="nav-links"></div>
 
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="products.html" class="active">Products</a>
-<a href="cart.html">Cart</a>
-<a href="login.html">Login</a>
-<a href="sign-up.html">Sign Up</a>
-</div>
-</div>
+      <div class="nav-user" id="nav-user"></div>
+    </div>
 
-<div class="container">
+    <div class="container">
+      <h1 class="page-title">Our Grocery Products</h1>
 
-<h1 class="page-title">Our Grocery Products</h1>
+      <div class="category-filter">
+        <button class="filter-btn" style="width: 200px">All</button>
+        <button class="filter-btn">Fruits & Vegetables</button>
+        <button class="filter-btn">Dairy & Eggs</button>
+        <button class="filter-btn">Bakery</button>
+        <button class="filter-btn">Snacks</button>
+        <button class="filter-btn">Household</button>
+      </div>
 
-<!-- Filter Buttons -->
+      <section class="category-section" data-category="fruits">
+        <h2>Fruits & Vegetables</h2>
+        <p class="category-desc">Fresh produce sourced daily from farms.</p>
+        <div class="product-grid"></div>
+      </section>
 
-<div class="category-filter">
-<button class="filter-btn">All</button>
-<button class="filter-btn">Fruits & Vegetables</button>
-<button class="filter-btn">Dairy & Eggs</button>
-<button class="filter-btn">Bakery</button>
-<button class="filter-btn">Beverages</button>
-<button class="filter-btn">Snacks</button>
-<button class="filter-btn">Household</button>
-</div>
+      <section class="category-section" data-category="dairy">
+        <h2>Dairy & Eggs</h2>
+        <p class="category-desc">
+          Fresh dairy products including milk, eggs, and butter.
+        </p>
+        <div class="product-grid"></div>
+      </section>
 
+      <section class="category-section" data-category="bakery">
+        <h2>Bakery</h2>
+        <p class="category-desc">Freshly baked breads and cakes.</p>
+        <div class="product-grid"></div>
+      </section>
 
-<!-- Fruits Category -->
+      <section class="category-section" data-category="snacks">
+        <h2>Snacks</h2>
+        <p class="category-desc">Quick snacks and packaged foods.</p>
+        <div class="product-grid"></div>
+      </section>
 
-<section class="category-section">
+      <section class="category-section" data-category="household">
+        <h2>Household Items</h2>
+        <p class="category-desc">Cleaning and home care essentials.</p>
+        <div class="product-grid"></div>
+      </section>
+    </div>
 
-<h2 id="fruits">Fruits & Vegetables</h2>
-<p class="category-desc">Fresh produce sourced daily from farms.</p>
-
-<div class="product-grid">
-
-<div class="product-card">
-<img src="images/apple.jpg">
-<h3>Apple (1kg)</h3>
-<p class="price">₹150</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/banana.jpg">
-<h3>Banana (1 dozen)</h3>
-<p class="price">₹60</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/orange.jpg">
-<h3>Orange (1kg)</h3>
-<p class="price">₹120</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/tomato.jpg">
-<h3>Tomato (1kg)</h3>
-<p class="price">₹40</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Dairy Category -->
-
-<section class="category-section">
-
-<h2 id="dairy">Dairy & Eggs</h2>
-<p class="category-desc">Fresh dairy products including milk, eggs, and butter.</p>
-
-<div class="product-grid">
-
-<div class="product-card">
-<img src="images/milk.jpg">
-<h3>Milk (1L)</h3>
-<p class="price">₹55</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/eggs.jpg">
-<h3>Eggs (12 pack)</h3>
-<p class="price">₹90</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/butter.jpg">
-<h3>Butter (500g)</h3>
-<p class="price">₹250</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Bakery Category -->
-
-<section class="category-section">
-
-<h2 id="bakery">Bakery</h2>
-<p class="category-desc">Freshly baked breads and cakes.</p>
-
-<div class="product-grid">
-
-<div class="product-card">
-<img src="images/bread.jpg">
-<h3>Brown Bread</h3>
-<p class="price">₹40</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/cake.jpg">
-<h3>Cake</h3>
-<p class="price">₹300</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Snacks -->
-
-<section class="category-section">
-
-<h2 id="snacks">Snacks</h2>
-<p class="category-desc">Quick snacks and packaged foods.</p>
-
-<div class="product-grid">
-
-<div class="product-card">
-<img src="images/chips.jpg">
-<h3>Chips</h3>
-<p class="price">₹30</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/biscuits.jpg">
-<h3>Biscuits</h3>
-<p class="price">₹25</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Household -->
-
-<section class="category-section">
-
-<h2 id="household">Household Items</h2>
-<p class="category-desc">Cleaning and home care essentials.</p>
-
-<div class="product-grid">
-
-<div class="product-card">
-<img src="images/detergent.jpg">
-<h3>Detergent</h3>
-<p class="price">₹180</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<img src="images/dishwash.jpg">
-<h3>Dishwash Liquid</h3>
-<p class="price">₹120</p>
-<input type="number" min="1" max="10" value="1" step="1">
-<button class="btn">Add to Cart</button>
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-<footer>
-<p>© 2026 FreshMart Grocery Delivery</p>
-</footer>
-
-</body>
+    <footer>
+      <p>© 2026 FreshMart Grocery Delivery</p>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+  </body>
 </html>

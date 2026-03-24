@@ -28,20 +28,29 @@
 
 .category-filter {
   margin-bottom: 30px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
 }
 
 .filter-btn {
+  width: 100%;
   background: #427a43;
   color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .filter-btn:hover {
   background: #005f02;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-btn.active {
+  background: #005f02;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }

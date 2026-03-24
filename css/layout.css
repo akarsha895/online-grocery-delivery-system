@@ -8,7 +8,6 @@
   gap: 20px;
 }
 
-/* Logo */
 .nav-logo {
   flex: 1;
 }
@@ -20,7 +19,6 @@
   font-weight: bold;
 }
 
-/* Search Bar (center) */
 .search-bar {
   flex: 2;
   display: flex;
@@ -39,7 +37,6 @@
   height: 35px;
 }
 
-/* Navigation links */
 .nav-links {
   display: flex;
   justify-content: center;
@@ -57,7 +54,6 @@
   font-weight: 600;
 }
 
-/* User section (right side) */
 .nav-user {
   display: flex;
   justify-content: flex-end;
@@ -74,6 +70,21 @@
   color: #f2e3bb;
   font-weight: 600;
 }
+
+.logout-btn {
+  color: white;
+  background: #e53935;
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #c62828;
+}
+
 .user-name {
   font-weight: bold;
 }
@@ -89,11 +100,11 @@
 }
 
 footer {
+  margin-top: auto;
   background: var(--dark-green);
   color: white;
   text-align: center;
   padding: 15px;
-  margin-top: 40px;
 }
 
 .product-grid {

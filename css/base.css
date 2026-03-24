@@ -16,8 +16,18 @@
   font-family: "Poppins", sans-serif;
 }
 
+html {
+  overflow-y: scroll;
+  height: 100%;
+  margin: 0;
+}
 body {
   background: var(--white);
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -38,7 +48,6 @@ body {
   background: var(--dark-green);
 }
 
-/* Forms */
 input,
 textarea {
   width: 100%;
@@ -55,8 +64,4 @@ th,
 td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
-}
-
-html {
-  overflow-y: scroll;
 }

@@ -33,14 +33,25 @@
       <h1 class="page-title">Our Grocery Products</h1>
 
       <div class="category-filter">
-        <button class="filter-btn" style="width: 200px">All</button>
+        <button class="filter-btn active">All</button>
         <button class="filter-btn">Fruits & Vegetables</button>
         <button class="filter-btn">Dairy & Eggs</button>
         <button class="filter-btn">Bakery</button>
         <button class="filter-btn">Snacks</button>
         <button class="filter-btn">Household</button>
       </div>
-
+      <p
+        id="no-results"
+        style="
+          display: none;
+          font-size: 18px;
+          text-align: center;
+          margin-top: 20px;
+          font-weight: 500;
+        "
+      >
+        No search results found
+      </p>
       <section class="category-section" data-category="fruits">
         <h2>Fruits & Vegetables</h2>
         <p class="category-desc">Fresh produce sourced daily from farms.</p>
@@ -75,7 +86,7 @@
     </div>
 
     <footer>
-      <p>© 2026 FreshMart Grocery Delivery</p>
+      <p>&copy; <span id="year"></span> FreshMart Grocery Delivery</p>
     </footer>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>

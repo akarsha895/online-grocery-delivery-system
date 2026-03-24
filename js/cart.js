@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  renderCart();
+});
+
+function renderCart() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const cartKey = "cart_" + currentUser.email;
 
   let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
@@ -21,8 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cartContainer.innerHTML = "";
 
-  // EMPTY CART
-
   if (cart.length === 0) {
     cartContainer.innerHTML = "<p>Your cart is empty</p>";
     itemCount.innerText = "0";
@@ -30,9 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // LOAD CART ITEMS
-
   cart.forEach((item, index) => {
+    if (item.qty > 10) item.qty = 10;
+    if (item.qty < 1) item.qty = 1;
+
     total += item.price * item.qty;
 
     const image = item.image ? item.image : "images/default.png";
@@ -47,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="cart-quantity">
           <input type="number" value="${item.qty}" min="1" max="10"
+            oninput="validateQty(this)"
             onchange="updateQty(${index}, this.value)" />
         </div>
 
@@ -61,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   itemCount.innerText = cart.length;
   totalPriceEl.innerText = "₹" + total;
-});
+}
 
 function removeItem(index) {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -73,7 +78,7 @@ function removeItem(index) {
 
   localStorage.setItem(cartKey, JSON.stringify(cart));
 
-  location.reload();
+  renderCart();
 }
 
 function updateQty(index, qty) {
@@ -84,11 +89,22 @@ function updateQty(index, qty) {
 
   qty = parseInt(qty);
 
-  if (qty <= 0) qty = 1;
+  if (isNaN(qty) || qty < 1) qty = 1;
+  if (qty > 10) qty = 10;
 
   cart[index].qty = qty;
 
   localStorage.setItem(cartKey, JSON.stringify(cart));
 
-  location.reload();
+  renderCart();
+}
+
+function validateQty(input) {
+  let value = parseInt(input.value);
+
+  if (isNaN(value) || value < 1) {
+    input.value = 1;
+  } else if (value > 10) {
+    input.value = 10;
+  }
 }

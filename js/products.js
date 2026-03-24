@@ -1,9 +1,9 @@
 // GET CATEGORY FROM URL
-
 const params = new URLSearchParams(window.location.search);
 const selectedCategory = params.get("category");
 
 document.addEventListener("DOMContentLoaded", () => {
+  const noResults = document.getElementById("no-results");
   const sections = document.querySelectorAll(".category-section");
 
   sections.forEach((section) => {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3 >${product.name}</h3>
           <p class="price">₹${product.price}</p>
 
-          <input type="number" min="1" value="1" max="10" />
+          <input type="number" min="1" value="1" max="10" oninput="validateQty(this)"/>
 
           <button class="btn" onclick="addToCart(${product.id}, this)">
             Add to Cart
@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
           section.style.display = "none";
         }
       });
+
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
     });
   });
 
@@ -62,8 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (category === selectedCategory) {
         section.style.display = "block";
-
-        // scroll to section
         setTimeout(() => {
           section.scrollIntoView({ behavior: "smooth" });
         }, 200);
@@ -84,8 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // PRODUCTS PAGE SEARCH
 
       const sections = document.querySelectorAll(".category-section");
-
       if (sections.length > 0) {
+        let hasResults = false;
+
         sections.forEach((section) => {
           const category = section.dataset.category;
           const container = section.querySelector(".product-grid");
@@ -100,23 +102,31 @@ document.addEventListener("DOMContentLoaded", () => {
           if (filtered.length === 0) {
             section.style.display = "none";
           } else {
+            hasResults = true;
             section.style.display = "block";
 
+            let html = "";
             filtered.forEach((product) => {
-              container.innerHTML += `
-              <div class="product-card">
-                <img src="${product.image}" alt="${product.name}" title="${product.name}" />
-               <h3 >${product.name}</h3>
-                <p class="price">₹${product.price}</p>
-                <input type="number" min="1" value="1" max="10" />
-                <button class="btn" onclick="addToCart(${product.id}, this)">
-                  Add to Cart
-                </button>
-              </div>
-            `;
+              html += `
+          <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" title="${product.name}" />
+            <h3>${product.name}</h3>
+            <p class="price">₹${product.price}</p>
+            <input type="number" min="1" value="1" max="10" oninput="validateQty(this)" />
+            <button class="btn" onclick="addToCart(${product.id}, this)">
+              Add to Cart
+            </button>
+          </div>
+        `;
             });
+
+            container.innerHTML = html;
           }
         });
+
+        if (noResults) {
+          noResults.style.display = hasResults ? "none" : "block";
+        }
       }
 
       // INDEX PAGE SEARCH (Featured products)
@@ -129,6 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const filtered = allProducts.filter((p) =>
           p.name.toLowerCase().includes(query),
         );
+        if (noResults) {
+          noResults.style.display = filtered.length === 0 ? "block" : "none";
+        }
 
         filtered.forEach((product) => {
           featuredContainer.innerHTML += `
@@ -136,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img src="${product.image}" alt="${product.name}" title="${product.name}" />
            <h3 >${product.name}</h3>
             <p class="price">₹${product.price}</p>
-            <input type="number" min="1" value="1" max="10" />
+            <input type="number" min="1" value="1" max="10" oninput="validateQty(this)" />
             <button class="btn" onclick="addToCart(${product.id}, this)">
               Add to Cart
             </button>
@@ -176,13 +189,22 @@ function addToCart(id, btn) {
 
   if (btn) {
     const input = btn.closest(".product-card").querySelector("input");
-    if (input) qty = parseInt(input.value) || 1;
+    if (input) {
+      qty = parseInt(input.value) || 1;
+
+      if (qty < 1) qty = 1;
+      if (qty > 10) qty = 10;
+    }
   }
 
   const existing = cart.find((item) => item.id === id);
 
   if (existing) {
     existing.qty += qty;
+
+    if (existing.qty > 10) {
+      existing.qty = 10;
+    }
   } else {
     cart.push({ ...product, qty });
   }
@@ -195,6 +217,16 @@ function addToCart(id, btn) {
   if (btn) {
     const input = btn.closest(".product-card").querySelector("input");
     if (input) input.value = 1;
+  }
+}
+
+function validateQty(input) {
+  let value = parseInt(input.value);
+
+  if (isNaN(value) || value < 1) {
+    input.value = 1;
+  } else if (value > 10) {
+    input.value = 10;
   }
 }
 
@@ -216,7 +248,7 @@ if (featuredContainer) {
      <h3 >${product.name}</h3>
         <p class="price">₹${product.price}</p>
 
-        <input type="number" min="1" value="1" max="10" />
+        <input type="number" min="1" value="1" max="10" oninput="validateQty(this)" />
 
         <button class="btn" onclick="addToCart(${product.id}, this)">
           Add to Cart

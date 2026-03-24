@@ -36,7 +36,18 @@
 
     <div class="container">
       <h2>Featured Products</h2>
-
+      <p
+        id="no-results"
+        style="
+          display: none;
+          font-size: 18px;
+          text-align: center;
+          margin-top: 20px;
+          font-weight: 500;
+        "
+      >
+        No search results found
+      </p>
       <div class="product-grid" id="featured-products"></div>
     </div>
 
@@ -125,7 +136,7 @@
     </section>
 
     <footer>
-      <p>© 2026 FreshMart Grocery Delivery</p>
+      <p>&copy; <span id="year"></span> FreshMart Grocery Delivery</p>
     </footer>
     <script src="js/data.js"></script>
     <script src="js/products.js"></script>

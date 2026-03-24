@@ -7,21 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Sync with users DB
   let users = JSON.parse(localStorage.getItem("users")) || [];
-
   let userIndex = users.findIndex((u) => u.email === currentUser.email);
 
   if (userIndex !== -1) {
     currentUser = users[userIndex];
   }
 
+  currentUser.addresses = (currentUser.addresses || []).map((addr) => {
+    if (typeof addr === "string") {
+      return { id: Date.now(), text: addr };
+    }
+    return addr;
+  });
+
   const cartKey = "cart_" + currentUser.email;
   let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
   const addressList = document.getElementById("address-list");
-
-  currentUser.addresses = currentUser.addresses || [];
 
   function renderAddresses() {
     addressList.innerHTML = "";
@@ -32,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     currentUser.addresses.forEach((addr, index) => {
-      const addressText = typeof addr === "string" ? addr : addr.text;
-
       addressList.innerHTML += `
         <label class="address-card">
-          <input type="radio" name="address" value="${index}" ${index === 0 ? "checked" : ""}/>
-          <span>${addressText}</span>
+          <input type="radio" name="address" value="${index}" ${
+            index === 0 ? "checked" : ""
+          }/>
+          <span>${addr.text}</span>
         </label>
       `;
     });
@@ -54,7 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    currentUser.addresses.push({ text: newAddress });
+    currentUser.addresses.push({
+      id: Date.now(),
+      text: newAddress,
+    });
 
     if (userIndex !== -1) {
       users[userIndex] = currentUser;
@@ -64,12 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
     input.value = "";
-
     renderAddresses();
   });
 
-  //  ORDER SUMMARY
-
+  // ORDER SUMMARY
   let itemCount = 0;
   let subtotal = 0;
 
@@ -91,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Your cart is empty. Add items before placing an order.");
       return;
     }
+
     const selectedAddress = document.querySelector(
       'input[name="address"]:checked',
     );
@@ -108,8 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const addrObj = currentUser.addresses[selectedAddress.value];
-    const address = typeof addrObj === "string" ? addrObj : addrObj.text;
+    const address = currentUser.addresses[selectedAddress.value].text;
 
     const payment = selectedPayment.nextElementSibling.innerText;
 

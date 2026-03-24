@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (currentUser) {
     navUser.innerHTML = `
       <span class="user-name">${currentUser.name}</span>
-      <a href="#" onclick="logout()">Logout</a>
+      <a href="#" class="logout-btn" onclick="logout()">Logout</a>
     `;
   } else {
     navUser.innerHTML = `
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
       link.classList.add("active");
     }
   });
+
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 });
 
 function logout() {
